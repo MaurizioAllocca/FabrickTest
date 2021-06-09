@@ -1,17 +1,13 @@
-package it.fabrick.service;
+package it.fabrick.service.bankingaccount;
 
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
-import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
-import it.fabrick.entity.moneyTransfer.response.MoneyTransferPayload;
 
-public interface FabrickService {
+public interface IBankingAccountService {
 
     CashAccountBalancePayload getCashAccountBalance();
 
     CashAccountTransactionsList getCashAccountTransactions(String fromAccountingDate, String toAccountingDate);
 
     CashAccountTransactionsList storeCashAccountTransactions(CashAccountTransactionsList cashAccountTransactionsList);
-
-    MoneyTransferPayload createMoneyTransfer(MoneyTransferRequest moneyTransferRequest);
 }

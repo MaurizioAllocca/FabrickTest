@@ -12,18 +12,12 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class HttpUtils {
 
     private static final String ATTACHMENT = "attachment; filename=";

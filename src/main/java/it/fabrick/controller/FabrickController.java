@@ -4,7 +4,8 @@ import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
 import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
 import it.fabrick.entity.moneyTransfer.response.MoneyTransferPayload;
-import it.fabrick.service.FabrickService;
+import it.fabrick.service.bankingaccount.IBankingAccountService;
+import it.fabrick.service.bankingpayments.IBankingPaymentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 public class FabrickController {
 
     @Autowired
-    private FabrickService fs;
+    private IBankingAccountService bas;
+    @Autowired
+    private IBankingPaymentsService bps;
 
     @GetMapping("/cashAccountBalance")
     public CashAccountBalancePayload getCashAccountBalance() {
-        return fs.getCashAccountBalance();
+        return bas.getCashAccountBalance();
     }
 
     @GetMapping("/cashAccountTransactions")
@@ -25,13 +28,13 @@ public class FabrickController {
             @RequestParam(required = false) String fromAccountingDate,
             @RequestParam(required = false) String toAccountingDate
     ) {
-        return fs.storeCashAccountTransactions(
-            fs.getCashAccountTransactions(fromAccountingDate, toAccountingDate));
+        return bas.storeCashAccountTransactions(
+                bas.getCashAccountTransactions(fromAccountingDate, toAccountingDate));
     }
 
     @PostMapping("/moneyTransfer")
     public MoneyTransferPayload createMoneyTransfer(
             @RequestBody MoneyTransferRequest moneyTransferRequest) {
-        return fs.createMoneyTransfer(moneyTransferRequest);
+        return bps.createMoneyTransfer(moneyTransferRequest);
     }
 }
