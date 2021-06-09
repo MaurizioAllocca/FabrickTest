@@ -1,5 +1,8 @@
 package it.fabrick.configuration;
 
+import it.fabrick.interceptor.RestTemplateHeaderModifierInterceptor;
+import it.fabrick.utils.HttpUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,35 +12,21 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 
 @Configuration
 public class Config {
 
-    @Value("${auth.schema}")
-    private String authSchema;
-
-    @Value("${api.key}")
-    private String apiKey;
-
-    @Value("${id.chiave}")
-    private String idChiave;
+    @Autowired
+    private RestTemplateHeaderModifierInterceptor restTemplateHeaderModifierInterceptor;
 
     @Bean
     public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
-    @Bean
-    public HttpEntity httpEntity() {
-        return new HttpEntity<>(
-            new LinkedMultiValueMap<>(
-                Map.of(
-                "Auth-Schema", Collections.singletonList(authSchema),
-                "Api-Key", Collections.singletonList(apiKey),
-                "Id-chiave", Collections.singletonList(idChiave)
-        )));
+        RestTemplate rt = new RestTemplate();
+        rt.getInterceptors().add(restTemplateHeaderModifierInterceptor);
+        return rt;
     }
 
 }

@@ -1,7 +1,8 @@
-package it.fabrick.entity;
+package it.fabrick.entity.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import it.fabrick.entity.response.GenericResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import it.fabrick.entity.Errors;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,9 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class CashAccountBalance extends GenericResponse {
+public class GenericResponse {
 
-    private CashAccountBalancePayload payload;
+    protected String status;
+    protected Errors[] errors;
+    protected Object payload;
 }

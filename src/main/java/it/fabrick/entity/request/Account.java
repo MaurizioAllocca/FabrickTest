@@ -1,19 +1,18 @@
-package it.fabrick.entity;
+package it.fabrick.entity.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import it.fabrick.entity.response.GenericResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
-public class CashAccountBalance extends GenericResponse {
+@Builder
+public class Account {
 
-    private CashAccountBalancePayload payload;
+    private String accountCode;
+    private String bicCode;
 }

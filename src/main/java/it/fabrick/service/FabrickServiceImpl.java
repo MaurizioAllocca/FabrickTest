@@ -1,11 +1,16 @@
 package it.fabrick.service;
 
 import it.fabrick.entity.*;
+import it.fabrick.entity.request.MoneyTransferRequest;
+import it.fabrick.entity.response.MoneyTransferPayload;
+import it.fabrick.entity.response.MoneyTransferResponse;
 import it.fabrick.repository.TransactionRepository;
 import it.fabrick.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -21,9 +26,6 @@ public class FabrickServiceImpl implements FabrickService {
     private RestTemplate rt;
 
     @Autowired
-    private HttpEntity he;
-
-    @Autowired
     private TransactionRepository transactionRepository;
 
     @Value("${uri.baseUrl}")
@@ -34,6 +36,9 @@ public class FabrickServiceImpl implements FabrickService {
 
     @Value("${uri.cashAccountTransactions}")
     private String cashAccountTransactions;
+
+    @Value("${uri.moneyTransfer}")
+    private String moneyTransfer;
 
     @Value("${accountId}")
     private String accountId;
@@ -49,7 +54,7 @@ public class FabrickServiceImpl implements FabrickService {
                     .build()
                     .createStringUrl(),
                 HttpMethod.GET,
-                he,
+                new HttpEntity<>(new HttpHeaders()),
                 CashAccountBalance.class)
             .getBody()
             .getPayload();
@@ -70,7 +75,7 @@ public class FabrickServiceImpl implements FabrickService {
                     .build()
                     .createStringUrl(),
                     HttpMethod.GET,
-                    he,
+                    new HttpEntity<>(new HttpHeaders()),
                     CashAccountTransactions.class)
             .getBody()
             .getPayload();
@@ -81,5 +86,22 @@ public class FabrickServiceImpl implements FabrickService {
         transactionRepository.saveAll(cashAccountTransactionsList.getList());
         transactionRepository.findAll().stream().forEach(y -> System.out.println("ID: " + y.getTransactionId()));
         return cashAccountTransactionsList;
+    }
+
+    @Override
+    public MoneyTransferPayload createMoneyTransfer(MoneyTransferRequest moneyTransferRequest) {
+        return rt
+                .exchange(
+                        HttpUtils.builder()
+                                .domain(baseUrl)
+                                .uri(moneyTransfer)
+                                .pathVariables(new String[]{accountId})
+                                .build()
+                                .createStringUrl(),
+                        HttpMethod.POST,
+                        new HttpEntity<>(moneyTransferRequest, new HttpHeaders()),
+                        MoneyTransferResponse.class)
+                .getBody()
+                .getPayload();
     }
 }

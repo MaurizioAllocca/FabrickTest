@@ -11,3 +11,4 @@ uri:
   baseUrl: https://sandbox.platfr.io
   cashAccountBalance: /api/gbs/banking/v4.0/accounts/{accountId}/balance
   cashAccountTransactions: /api/gbs/banking/v4.0/accounts/{accountId}/transactions
+  moneyTransfer: /api/gbs/banking/v4.0/accounts/{accountId}/payments/money-transfers
