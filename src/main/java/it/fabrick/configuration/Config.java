@@ -5,9 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.Collections;
+import java.util.Map;
 
 @Configuration
 public class Config {
@@ -28,11 +31,13 @@ public class Config {
 
     @Bean
     public HttpEntity httpEntity() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Auth-Schema", authSchema);
-        headers.add("Api-Key", apiKey);
-        headers.add("Id-chiave", idChiave);
-        return new HttpEntity<>(headers);
+        return new HttpEntity<>(
+            new LinkedMultiValueMap<>(
+                Map.of(
+                "Auth-Schema", Collections.singletonList(authSchema),
+                "Api-Key", Collections.singletonList(apiKey),
+                "Id-chiave", Collections.singletonList(idChiave)
+        )));
     }
 
 }

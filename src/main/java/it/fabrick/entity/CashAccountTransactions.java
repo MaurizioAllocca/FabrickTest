@@ -6,12 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Account {
+public class CashAccountTransactions {
 
-    private Payload payload;
+    private CashAccountTransactionsList payload;
+
 }

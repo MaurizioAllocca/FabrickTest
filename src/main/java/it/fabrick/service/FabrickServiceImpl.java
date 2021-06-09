@@ -1,14 +1,12 @@
 package it.fabrick.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import it.fabrick.entity.CashAccountBalance;
-import it.fabrick.entity.CashAccountBalancePayload;
+import it.fabrick.entity.*;
+import it.fabrick.repository.TransactionRepository;
 import it.fabrick.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -25,6 +23,9 @@ public class FabrickServiceImpl implements FabrickService {
     @Autowired
     private HttpEntity he;
 
+    @Autowired
+    private TransactionRepository transactionRepository;
+
     @Value("${uri.baseUrl}")
     private String baseUrl;
 
@@ -39,8 +40,6 @@ public class FabrickServiceImpl implements FabrickService {
 
     @Override
     public CashAccountBalancePayload getCashAccountBalance() {
-//        return rt.exchange(baseUrl + cashAccountBalance, HttpMethod.GET, he, CashAccountBalance.class).getBody();
-
         return rt
             .exchange(
                 HttpUtils.builder()
@@ -57,22 +56,30 @@ public class FabrickServiceImpl implements FabrickService {
     }
 
     @Override
-    public JsonNode getCashAccountTransactions(String fromAccountingDate, String toAccountingDate) {
+    public CashAccountTransactionsList getCashAccountTransactions(String fromAccountingDate, String toAccountingDate) {
         return rt
-                .exchange(
-                        HttpUtils.builder()
-                                .domain(baseUrl)
-                                .uri(cashAccountTransactions)
-                                .pathVariables(new String[]{accountId})
-                                .queryParams(new LinkedMultiValueMap<>(Map.of(
-                                        "fromAccountingDate", Collections.singletonList(fromAccountingDate),
-                                        "toAccountingDate", Collections.singletonList(toAccountingDate)))
-                                )
-                                .build()
-                                .createStringUrl(),
-                        HttpMethod.GET,
-                        he,
-                        JsonNode.class)
-                .getBody();
+            .exchange(
+                HttpUtils.builder()
+                    .domain(baseUrl)
+                    .uri(cashAccountTransactions)
+                    .pathVariables(new String[]{accountId})
+                    .queryParams(new LinkedMultiValueMap<>(Map.of(
+                        "fromAccountingDate", Collections.singletonList(fromAccountingDate),
+                        "toAccountingDate", Collections.singletonList(toAccountingDate)))
+                    )
+                    .build()
+                    .createStringUrl(),
+                    HttpMethod.GET,
+                    he,
+                    CashAccountTransactions.class)
+            .getBody()
+            .getPayload();
+    }
+
+    @Override
+    public CashAccountTransactionsList storeCashAccountTransactions(CashAccountTransactionsList cashAccountTransactionsList) {
+        transactionRepository.saveAll(cashAccountTransactionsList.getList());
+        transactionRepository.findAll().stream().forEach(y -> System.out.println("ID: " + y.getTransactionId()));
+        return cashAccountTransactionsList;
     }
 }

@@ -1,12 +1,14 @@
 package it.fabrick.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import it.fabrick.entity.CashAccountBalance;
 import it.fabrick.entity.CashAccountBalancePayload;
+import it.fabrick.entity.CashAccountTransactionsList;
+import it.fabrick.entity.CashAccountTransactionsPayload;
 
 public interface FabrickService {
 
     CashAccountBalancePayload getCashAccountBalance();
 
-    JsonNode getCashAccountTransactions(String fromAccountingDate, String toAccountingDate);
+    CashAccountTransactionsList getCashAccountTransactions(String fromAccountingDate, String toAccountingDate);
+
+    CashAccountTransactionsList storeCashAccountTransactions(CashAccountTransactionsList cashAccountTransactionsList);
 }

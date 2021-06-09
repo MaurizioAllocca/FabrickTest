@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 9091
 api:
   key: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
 auth:
@@ -9,6 +9,5 @@ id:
 accountId: 14537780
 uri:
   baseUrl: https://sandbox.platfr.io
-  cashAccount: /api/gbs/banking/v4.0/accounts/14537780
   cashAccountBalance: /api/gbs/banking/v4.0/accounts/{accountId}/balance
   cashAccountTransactions: /api/gbs/banking/v4.0/accounts/{accountId}/transactions
