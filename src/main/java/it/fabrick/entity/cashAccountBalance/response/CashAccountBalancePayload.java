@@ -1,4 +1,4 @@
-package it.fabrick.entity;
+package it.fabrick.entity.cashAccountBalance.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

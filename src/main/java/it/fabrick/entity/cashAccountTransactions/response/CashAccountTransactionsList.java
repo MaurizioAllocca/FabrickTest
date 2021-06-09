@@ -1,4 +1,4 @@
-package it.fabrick.entity;
+package it.fabrick.entity.cashAccountTransactions.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

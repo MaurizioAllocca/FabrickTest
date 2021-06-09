@@ -1,8 +1,8 @@
 package it.fabrick.handler;
 
-import it.fabrick.entity.Errors;
+import it.fabrick.entity.response.Errors;
 import it.fabrick.entity.response.GenericResponse;
-import it.fabrick.error.ErrorResponse;
+import it.fabrick.error.ErrorCode;
 import it.fabrick.utils.JsonUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class ExceptionHandler implements IExceptionHandler {
 
     @Override
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-    public ResponseEntity<? extends ErrorResponse> handleGenericException(Exception e, HttpServletRequest request) {
+    public ResponseEntity<? extends ErrorCode> handleGenericException(Exception e, HttpServletRequest request) {
         return new ResponseEntity<>(
                 IExceptionHandler.buildErrorResponse(
                         request,
@@ -27,8 +27,10 @@ public class ExceptionHandler implements IExceptionHandler {
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(HttpClientErrorException.class)
-    public ResponseEntity<? extends ErrorResponse> handleHttpClientErrorException(HttpStatusCodeException e, HttpServletRequest request) {
-        Errors error = JsonUtils.asPojo(e.getResponseBodyAsString(), GenericResponse.class).getErrors()[0];
+    public ResponseEntity<? extends ErrorCode> handleHttpClientErrorException(HttpStatusCodeException e, HttpServletRequest request) {
+        Errors error = JsonUtils.asPojo(
+                e.getResponseBodyAsString(), GenericResponse.class)
+                .getErrors()[0];
 
         return new ResponseEntity<>(
                 IExceptionHandler.buildErrorResponse(

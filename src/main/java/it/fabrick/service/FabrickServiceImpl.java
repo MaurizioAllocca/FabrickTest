@@ -1,13 +1,15 @@
 package it.fabrick.service;
 
-import it.fabrick.entity.*;
-import it.fabrick.entity.request.MoneyTransferRequest;
-import it.fabrick.entity.response.MoneyTransferPayload;
-import it.fabrick.entity.response.MoneyTransferResponse;
+import it.fabrick.entity.cashAccountBalance.response.CashAccountBalance;
+import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactions;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
+import it.fabrick.entity.moneyTransfer.response.MoneyTransferPayload;
+import it.fabrick.entity.moneyTransfer.response.MoneyTransferResponse;
 import it.fabrick.repository.TransactionRepository;
 import it.fabrick.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

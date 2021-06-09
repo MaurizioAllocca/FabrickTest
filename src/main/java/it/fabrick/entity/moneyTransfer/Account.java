@@ -1,4 +1,4 @@
-package it.fabrick.entity.request;
+package it.fabrick.entity.moneyTransfer;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

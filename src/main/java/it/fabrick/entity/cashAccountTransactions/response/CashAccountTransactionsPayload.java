@@ -1,14 +1,10 @@
-package it.fabrick.entity;
+package it.fabrick.entity.cashAccountTransactions.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.lang.annotation.Documented;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)

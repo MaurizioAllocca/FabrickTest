@@ -1,9 +1,8 @@
 package it.fabrick.error;
 
-public interface IError {
+public interface IErrorCode {
 
     String getErrorCode();
-
     String getErrorMessage();
 
 }
