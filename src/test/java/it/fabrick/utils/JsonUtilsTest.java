@@ -37,7 +37,9 @@ public class JsonUtilsTest {
             , CashAccountTransactionsList.class);
 
         assertThat(cashAccountTransactionsList, notNullValue(CashAccountTransactionsList.class));
+
         assertThat(cashAccountTransactionsList.getList(), hasSize(11));
+
         assertThat(cashAccountTransactionsList.getList(), hasItem(
             CashAccountTransactionsPayload
                 .builder()

@@ -1,0 +1,41 @@
+{
+  "moneyTransferId": "331402294",
+  "cro": "0248625610903268",
+  "trn": "",
+  "status": "BOOKED",
+  "uri": "NOTPROVIDED",
+  "direction": "OUTGOING",
+  "debtor": {
+    "name": "LUCA TERRIBILE",
+    "account": {
+      "accountCode": "IT40L0326822311052923800661",
+      "bicCode": null
+    }
+  },
+  "creditor": {
+    "name": "JOHN DOE",
+    "account": {
+      "accountCode": "IT32I0200832974023271536930",
+      "bicCode": "UNCRITMMXXX"
+    }
+  },
+  "feeAccountId": "14537780",
+  "description": "PAYMENT INVOICE 75/2017",
+  "createdDatetime": "2021-06-10T15:50:25.503+0200",
+  "accountedDatetime": "",
+  "debtorValueDate": "2021-06-11",
+  "creditorValueDate": "2021-06-14",
+  "amount": {
+    "debtorAmount": 1,
+    "debtorCurrency": "EUR",
+    "creditorAmount": 1,
+    "creditorCurrency": "EUR",
+    "creditorCurrencyDate": "",
+    "currencyRatio": 1
+  },
+  "isUrgent": false,
+  "isInstant": false,
+  "feeType": "SHA",
+  "fees": [],
+  "hasTaxRelief": true
+}
