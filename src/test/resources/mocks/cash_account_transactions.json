@@ -1,0 +1,147 @@
+{
+  "list": [
+    {
+      "transactionId": "222260199601",
+      "operationId": "21000094634022",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260168401",
+      "operationId": "21000094633764",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260168301",
+      "operationId": "21000094633763",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260168101",
+      "operationId": "21000094633761",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260167401",
+      "operationId": "21000094633758",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260113101",
+      "operationId": "21000094633279",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260113001",
+      "operationId": "21000094633278",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260112901",
+      "operationId": "21000094633277",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260112201",
+      "operationId": "21000094633274",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -800.0,
+      "currency": "EUR",
+      "description": "BA JOHN DOE               PAYMENT INVOICE 75/2017"
+    },
+    {
+      "transactionId": "222260111400",
+      "operationId": "21000094633269",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0050"
+      },
+      "amount": -1.0,
+      "currency": "EUR",
+      "description": "PD BOLLETTINO CBILL"
+    },
+    {
+      "transactionId": "222247933101",
+      "operationId": "21000094511717",
+      "accountingDate": "2021-06-09",
+      "valueDate": "2021-06-09",
+      "type": {
+        "enumeration": "GBS_TRANSACTION_TYPE",
+        "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0009"
+      },
+      "amount": -0.01,
+      "currency": "EUR",
+      "description": "BA MERCHANT123            REF NUMBER MERCHANT"
+    }
+  ]
+}
