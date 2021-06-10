@@ -41,40 +41,37 @@ public class BankingAccountService implements IBankingAccountService {
 
     @Override
     public CashAccountBalancePayload getCashAccountBalance() {
-        return rt
-                .exchange(
-                        HttpUtils.builder()
-                                .domain(baseUrl)
-                                .uri(cashAccountBalance)
-                                .pathVariables(new String[]{accountId})
-                                .build()
-                                .createStringUrl(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        CashAccountBalance.class)
-                .getBody()
-                .getPayload();
+        return rt.exchange(HttpUtils.builder().domain(baseUrl)
+                .uri(cashAccountBalance)
+                .pathVariables(new String[]{accountId})
+                .build()
+                .createStringUrl(),
+            HttpMethod.GET,
+            new HttpEntity<>(new HttpHeaders()),
+            CashAccountBalance.class)
+            .getBody()
+            .getPayload();
     }
 
     @Override
     public CashAccountTransactionsList getCashAccountTransactions(String fromAccountingDate, String toAccountingDate) {
         return rt
-                .exchange(
-                        HttpUtils.builder()
-                                .domain(baseUrl)
-                                .uri(cashAccountTransactions)
-                                .pathVariables(new String[]{accountId})
-                                .queryParams(new LinkedMultiValueMap<>(Map.of(
-                                        "fromAccountingDate", Collections.singletonList(fromAccountingDate),
-                                        "toAccountingDate", Collections.singletonList(toAccountingDate)))
-                                )
-                                .build()
-                                .createStringUrl(),
-                        HttpMethod.GET,
-                        new HttpEntity<>(new HttpHeaders()),
-                        CashAccountTransactions.class)
-                .getBody()
-                .getPayload();
+            .exchange(
+                HttpUtils.builder()
+                    .domain(baseUrl)
+                    .uri(cashAccountTransactions)
+                    .pathVariables(new String[]{accountId})
+                    .queryParams(new LinkedMultiValueMap<>(Map.of(
+                        "fromAccountingDate", Collections.singletonList(fromAccountingDate),
+                        "toAccountingDate", Collections.singletonList(toAccountingDate)))
+                    )
+                    .build()
+                    .createStringUrl(),
+                HttpMethod.GET,
+                new HttpEntity<>(new HttpHeaders()),
+                CashAccountTransactions.class)
+            .getBody()
+            .getPayload();
     }
 
     @Override

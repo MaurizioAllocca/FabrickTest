@@ -30,17 +30,17 @@ public class BankingPaymentsService implements IBankingPaymentsService {
     @Override
     public MoneyTransferPayload createMoneyTransfer(MoneyTransferRequest moneyTransferRequest) {
         return rt
-                .exchange(
-                        HttpUtils.builder()
-                                .domain(baseUrl)
-                                .uri(moneyTransfer)
-                                .pathVariables(new String[]{accountId})
-                                .build()
-                                .createStringUrl(),
-                        HttpMethod.POST,
-                        new HttpEntity<>(moneyTransferRequest, new HttpHeaders()),
-                        MoneyTransferResponse.class)
-                .getBody()
-                .getPayload();
+            .exchange(
+                HttpUtils.builder()
+                    .domain(baseUrl)
+                    .uri(moneyTransfer)
+                    .pathVariables(new String[]{accountId})
+                    .build()
+                    .createStringUrl(),
+                HttpMethod.POST,
+                new HttpEntity<>(moneyTransferRequest, new HttpHeaders()),
+                MoneyTransferResponse.class)
+            .getBody()
+            .getPayload();
     }
 }

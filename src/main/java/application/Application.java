@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "it.fabrick"
+    "it.fabrick"
 })
 @EnableMongoRepositories(basePackages = "it.fabrick.repository")
 public class Application {

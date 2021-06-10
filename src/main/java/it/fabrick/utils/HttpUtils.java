@@ -1,21 +1,9 @@
 package it.fabrick.utils;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.CacheControl;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @Builder
 public class HttpUtils {
@@ -31,8 +19,8 @@ public class HttpUtils {
     public String createStringUrl() {
         if (pathVariables != null && pathVariables.length > 0) {
             return buildQueryParams(buildUrl())
-                    .buildAndExpand(pathVariables)
-                    .toUriString();
+                .buildAndExpand(pathVariables)
+                .toUriString();
         }
 
         return buildQueryParams(buildUrl()).toUriString();

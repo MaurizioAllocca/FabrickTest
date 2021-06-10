@@ -25,16 +25,16 @@ public class FabrickController {
 
     @GetMapping("/cashAccountTransactions")
     public CashAccountTransactionsList getCashAccountTransactions(
-            @RequestParam(required = false) String fromAccountingDate,
-            @RequestParam(required = false) String toAccountingDate
+        @RequestParam(required = false) String fromAccountingDate,
+        @RequestParam(required = false) String toAccountingDate
     ) {
         return bas.storeCashAccountTransactions(
-                bas.getCashAccountTransactions(fromAccountingDate, toAccountingDate));
+            bas.getCashAccountTransactions(fromAccountingDate, toAccountingDate));
     }
 
     @PostMapping("/moneyTransfer")
     public MoneyTransferPayload createMoneyTransfer(
-            @RequestBody MoneyTransferRequest moneyTransferRequest) {
+        @RequestBody MoneyTransferRequest moneyTransferRequest) {
         return bps.createMoneyTransfer(moneyTransferRequest);
     }
 }

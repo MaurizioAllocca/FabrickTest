@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ErrorCode implements IErrorCode {
-    private String errorCode;
-    private String errorMessage;
+    private String code;
+    private String description;
 }

@@ -26,21 +26,20 @@ public class Aop {
     @Before("restControllerMonitoring()")
     public void logControllerMethodEntering(JoinPoint joinPoint) {
         log.info("START {}",
-                String.join(
-                        ".",
-                        joinPoint.getSignature().getDeclaringType().getSimpleName(),
-                        joinPoint.getSignature().getName()));
+            String.join(
+                ".",
+                joinPoint.getSignature().getDeclaringType().getSimpleName(),
+                joinPoint.getSignature().getName()));
     }
 
     @AfterReturning(pointcut =
-            "restControllerMonitoring() || " +
-                    "controllerAdviceMonitoring()")
+        "restControllerMonitoring() || controllerAdviceMonitoring()")
     public void logControllerMethodExiting(JoinPoint joinPoint) {
         log.info("END {}",
-                String.join(
-                        ".",
-                        joinPoint.getSignature().getDeclaringType().getSimpleName(),
-                        joinPoint.getSignature().getName()));
+            String.join(
+                ".",
+                joinPoint.getSignature().getDeclaringType().getSimpleName(),
+                joinPoint.getSignature().getName()));
     }
 
 }
