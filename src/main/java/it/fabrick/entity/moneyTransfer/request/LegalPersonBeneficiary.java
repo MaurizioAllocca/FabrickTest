@@ -1,4 +1,4 @@
-package it.fabrick.entity.cashAccountTransactions.response;
+package it.fabrick.entity.moneyTransfer.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CashAccountTransactionsPayloadType {
+public class LegalPersonBeneficiary {
 
-    private String enumeration;
-    private String value;
+    private String fiscalCode;
+    private String legalRepresentativeFiscalCode;
+
 }

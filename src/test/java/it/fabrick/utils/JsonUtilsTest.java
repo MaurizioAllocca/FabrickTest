@@ -1,15 +1,13 @@
 package it.fabrick.utils;
 
-import it.fabrick.Application;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayloadType;
+import it.fabrick.entity.cashAccountTransactions.response.Type;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StreamUtils;
 
@@ -47,7 +45,7 @@ public class JsonUtilsTest {
                 .accountingDate("2021-06-09")
                 .valueDate("2021-06-09")
                 .type(
-                    CashAccountTransactionsPayloadType
+                    Type
                         .builder()
                         .enumeration("GBS_TRANSACTION_TYPE")
                         .value("GBS_ACCOUNT_TRANSACTION_TYPE_0009")

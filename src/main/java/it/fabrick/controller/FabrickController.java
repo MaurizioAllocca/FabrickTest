@@ -25,8 +25,8 @@ public class FabrickController {
 
     @GetMapping("/cashAccountTransactions")
     public CashAccountTransactionsList getCashAccountTransactions(
-        @RequestParam(required = false) String fromAccountingDate,
-        @RequestParam(required = false) String toAccountingDate
+        @RequestParam String fromAccountingDate,
+        @RequestParam String toAccountingDate
     ) {
         return bas.storeCashAccountTransactions(
             bas.getCashAccountTransactions(fromAccountingDate, toAccountingDate));

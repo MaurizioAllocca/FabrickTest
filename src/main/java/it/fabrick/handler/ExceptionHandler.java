@@ -6,6 +6,7 @@ import it.fabrick.error.ErrorCode;
 import it.fabrick.utils.JsonUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -38,5 +39,16 @@ public class ExceptionHandler implements IExceptionHandler {
                 error.getCode(),
                 error.getDescription()),
             e.getStatusCode());
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<? extends ErrorCode> handleMissingServletRequestParameterException(MissingServletRequestParameterException e, HttpServletRequest request) {
+
+        return new ResponseEntity<>(
+            IExceptionHandler.buildErrorResponse(
+                request,
+                "FBR000",
+                e.getMessage()),
+            HttpStatus.BAD_REQUEST);
     }
 }

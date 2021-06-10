@@ -18,5 +18,6 @@ public class TaxRelief {
     private String creditorFiscalCode;
     private String beneficiaryType;
     private NaturalPersonBeneficiary naturalPersonBeneficiary;
+    private LegalPersonBeneficiary legalPersonBeneficiary;
 
 }

@@ -11,14 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CashAccountTransactionsPayload {
+public class Type {
 
-    private String transactionId;
-    private String operationId;
-    private String accountingDate;
-    private String valueDate;
-    private Type type;
-    private Double amount;
-    private String currency;
-    private String description;
+    private String enumeration;
+    private String value;
 }

@@ -34,7 +34,6 @@ public class MoneyTransferPayload {
     private Boolean isUrgent;
     private Boolean isInstant;
     private String feeType;
-    //TODO change to the correct type
     private ArrayNode fees;
     private Boolean hasTaxRelief;
 
