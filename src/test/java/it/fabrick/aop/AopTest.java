@@ -1,6 +1,6 @@
 package it.fabrick.aop;
 
-import it.fabrick.application.Application;
+import it.fabrick.Application;
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
 import it.fabrick.service.bankingaccount.IBankingAccountService;
 import org.junit.Test;
@@ -21,7 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@ContextConfiguration(classes = Application.class)
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 public class AopTest {

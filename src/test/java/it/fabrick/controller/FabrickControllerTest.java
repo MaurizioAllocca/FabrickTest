@@ -2,7 +2,7 @@ package it.fabrick.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.fabrick.application.Application;
+import it.fabrick.Application;
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
 import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
@@ -33,7 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@ContextConfiguration(classes = Application.class)
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 public class FabrickControllerTest {
