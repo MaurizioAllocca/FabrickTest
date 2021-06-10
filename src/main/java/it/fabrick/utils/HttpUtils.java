@@ -8,8 +8,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Builder
 public class HttpUtils {
 
-    private static final String ATTACHMENT = "attachment; filename=";
-
     private String url;
     private String domain;
     private String uri;
