@@ -49,11 +49,10 @@ public class ExceptionHandler implements IExceptionHandler {
     public ResponseEntity<? extends ErrorCode> handleMissingServletRequestParameterException(
         MissingServletRequestParameterException e, HttpServletRequest request
     ) {
-
         return new ResponseEntity<>(
             IExceptionHandler.buildErrorResponse(
                 request,
-                "FBR000",
+                "FBC000",
                 e.getMessage()),
             HttpStatus.BAD_REQUEST);
     }
