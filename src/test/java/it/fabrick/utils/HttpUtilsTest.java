@@ -24,19 +24,22 @@ public class HttpUtilsTest {
             .domain("http://localhost:8080")
             .uri("/testUri")
             .build()
-            .createStringUrl(), is("http://localhost:8080/testUri"));
+            .createStringUrl(),
+            is("http://localhost:8080/testUri"));
 
         assertThat(HttpUtils.builder()
             .url("http://localhost:8080/testUri")
             .build()
-            .createStringUrl(), is("http://localhost:8080/testUri"));
+            .createStringUrl(),
+            is("http://localhost:8080/testUri"));
 
         assertThat(HttpUtils.builder()
             .domain("http://localhost:8080")
             .uri("/testUri/{id}")
             .pathVariables(new String[]{"1234"})
             .build()
-            .createStringUrl(), is("http://localhost:8080/testUri/1234"));
+            .createStringUrl(),
+            is("http://localhost:8080/testUri/1234"));
 
         assertThat(HttpUtils.builder()
             .domain("http://localhost:8080")
@@ -47,7 +50,8 @@ public class HttpUtilsTest {
                 "param2", Collections.singletonList("34")))
             )
             .build()
-            .createStringUrl(), anyOf(
+            .createStringUrl(),
+            anyOf(
             Arrays.asList(
                 equalToObject("http://localhost:8080/testUri/1234?param1=12&param2=34"),
                 equalToObject("http://localhost:8080/testUri/1234?param2=34&param1=12"))));

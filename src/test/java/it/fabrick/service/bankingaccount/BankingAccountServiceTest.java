@@ -2,7 +2,7 @@ package it.fabrick.service.bankingaccount;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
 import it.fabrick.repository.TransactionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,19 +34,21 @@ public class BankingAccountServiceTest {
     @Test
     public void storeCashAccountTransactionsTest() throws Exception {
 
-        CashAccountTransactionsList cashAccountTransactionsList = new ObjectMapper()
+        CashAccountTransactionsPayload cashAccountTransactionsPayload = new ObjectMapper()
             .readValue(cashAccountTransactionsMock.getInputStream(),
                 new TypeReference<>() {
                 });
 
         bas.storeCashAccountTransactions(null);
-        assertThat(transactionRepository.findAll(), hasSize(0));
+        assertThat(transactionRepository.findAll(),
+            hasSize(0));
 
         assertThat(
-            bas.storeCashAccountTransactions(cashAccountTransactionsList),
-            is(cashAccountTransactionsList));
+            bas.storeCashAccountTransactions(cashAccountTransactionsPayload),
+            is(cashAccountTransactionsPayload));
 
-        assertThat(transactionRepository.findAll(), hasSize(11));
+        assertThat(transactionRepository.findAll(),
+            hasSize(11));
 
     }
 }

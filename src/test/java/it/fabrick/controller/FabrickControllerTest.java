@@ -3,7 +3,7 @@ package it.fabrick.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
 import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
 import it.fabrick.entity.moneyTransfer.response.MoneyTransferPayload;
 import it.fabrick.service.bankingaccount.IBankingAccountService;
@@ -68,23 +68,24 @@ public class FabrickControllerTest {
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()
-            .getContentAsString(), is("{\"balance\":\"80\"}"));
+            .getContentAsString(),
+            is("{\"balance\":\"80\"}"));
 
     }
 
     @Test
     public void getCashAccountTransactionsTest() throws Exception {
 
-        CashAccountTransactionsList cashAccountTransactionsList = new ObjectMapper()
+        CashAccountTransactionsPayload cashAccountTransactionsPayload = new ObjectMapper()
             .readValue(cashAccountTransactionsMock.getInputStream(),
                 new TypeReference<>() {
                 });
 
         when(bas.getCashAccountTransactions(anyString(), anyString(), anyString()))
-            .thenReturn(cashAccountTransactionsList);
+            .thenReturn(cashAccountTransactionsPayload);
 
-        when(bas.storeCashAccountTransactions(any(CashAccountTransactionsList.class)))
-            .thenReturn(cashAccountTransactionsList);
+        when(bas.storeCashAccountTransactions(any(CashAccountTransactionsPayload.class)))
+            .thenReturn(cashAccountTransactionsPayload);
 
         String response = mockMvc.perform(
             get("/fabrick/cashAccountTransactions/123")
@@ -96,7 +97,8 @@ public class FabrickControllerTest {
             .getResponse()
             .getContentAsString();
 
-        assertThat(JsonUtils.asPojo(response, CashAccountTransactionsList.class), is(cashAccountTransactionsList));
+        assertThat(JsonUtils.asPojo(response, CashAccountTransactionsPayload.class),
+            is(cashAccountTransactionsPayload));
 
     }
 
@@ -120,7 +122,8 @@ public class FabrickControllerTest {
             .getResponse()
             .getContentAsString();
 
-        assertThat(JsonUtils.asPojo(response, MoneyTransferPayload.class), is(moneyTransferPayload));
+        assertThat(JsonUtils.asPojo(response, MoneyTransferPayload.class),
+            is(moneyTransferPayload));
 
     }
 

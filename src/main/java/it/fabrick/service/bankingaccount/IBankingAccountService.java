@@ -1,15 +1,15 @@
 package it.fabrick.service.bankingaccount;
 
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
 
 public interface IBankingAccountService {
 
     CashAccountBalancePayload getCashAccountBalance(String accountId);
 
-    CashAccountTransactionsList getCashAccountTransactions(
+    CashAccountTransactionsPayload getCashAccountTransactions(
         String fromAccountingDate, String toAccountingDate, String accountId);
 
-    CashAccountTransactionsList storeCashAccountTransactions(
-        CashAccountTransactionsList cashAccountTransactionsList);
+    CashAccountTransactionsPayload storeCashAccountTransactions(
+        CashAccountTransactionsPayload cashAccountTransactionsList);
 }

@@ -14,6 +14,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CashAccountTransactions extends GenericResponse {
 
-    private CashAccountTransactionsList payload;
+    private CashAccountTransactionsPayload payload;
 
 }

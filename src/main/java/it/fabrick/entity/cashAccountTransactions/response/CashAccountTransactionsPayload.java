@@ -5,20 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Document(collection = "transaction")
 public class CashAccountTransactionsPayload {
 
-    private String transactionId;
-    private String operationId;
-    private String accountingDate;
-    private String valueDate;
-    private Type type;
-    private Double amount;
-    private String currency;
-    private String description;
+    private List<CashAccountTransaction> list;
 }

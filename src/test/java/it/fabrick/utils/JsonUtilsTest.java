@@ -1,6 +1,6 @@
 package it.fabrick.utils;
 
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransaction;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
 import it.fabrick.entity.cashAccountTransactions.response.Type;
 import org.junit.Test;
@@ -28,17 +28,19 @@ public class JsonUtilsTest {
 
     @Test
     public void asPojoTest() throws IOException {
-        CashAccountTransactionsList cashAccountTransactionsList = JsonUtils.asPojo(
+        CashAccountTransactionsPayload cashAccountTransactionsList = JsonUtils.asPojo(
             StreamUtils.copyToString
                 (cashAccountTransactionsMock.getInputStream(), Charset.defaultCharset())
-            , CashAccountTransactionsList.class);
+            , CashAccountTransactionsPayload.class);
 
-        assertThat(cashAccountTransactionsList, notNullValue(CashAccountTransactionsList.class));
+        assertThat(cashAccountTransactionsList, notNullValue(CashAccountTransactionsPayload.class));
 
-        assertThat(cashAccountTransactionsList.getList(), hasSize(11));
+        assertThat(cashAccountTransactionsList.getList()
+            , hasSize(11));
 
-        assertThat(cashAccountTransactionsList.getList(), hasItem(
-            CashAccountTransactionsPayload
+        assertThat(cashAccountTransactionsList.getList()
+            , hasItem(
+            CashAccountTransaction
                 .builder()
                 .transactionId("222260168301")
                 .operationId("21000094633763")

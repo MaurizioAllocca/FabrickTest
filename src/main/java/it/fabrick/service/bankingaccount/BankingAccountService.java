@@ -3,7 +3,7 @@ package it.fabrick.service.bankingaccount;
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalance;
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactions;
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
 import it.fabrick.repository.TransactionRepository;
 import it.fabrick.utils.HttpUtils;
 import it.fabrick.utils.RestTemplateUtils;
@@ -52,7 +52,7 @@ public class BankingAccountService implements IBankingAccountService {
     }
 
     @Override
-    public CashAccountTransactionsList getCashAccountTransactions(
+    public CashAccountTransactionsPayload getCashAccountTransactions(
         String fromAccountingDate, String toAccountingDate, String accountId
     ) {
         return RestTemplateUtils.makeRequest(
@@ -73,15 +73,15 @@ public class BankingAccountService implements IBankingAccountService {
     }
 
     @Override
-    public CashAccountTransactionsList storeCashAccountTransactions(
-        CashAccountTransactionsList cashAccountTransactionsList
+    public CashAccountTransactionsPayload storeCashAccountTransactions(
+        CashAccountTransactionsPayload cashAccountTransactionsPayload
     ) {
         transactionRepository.saveAll(
             Optional.ofNullable(
-                Optional.ofNullable(cashAccountTransactionsList)
-                    .orElseGet(CashAccountTransactionsList::new).getList())
+                Optional.ofNullable(cashAccountTransactionsPayload)
+                    .orElseGet(CashAccountTransactionsPayload::new).getList())
                 .orElseGet(Collections::emptyList));
-        return cashAccountTransactionsList;
+        return cashAccountTransactionsPayload;
     }
 
 }

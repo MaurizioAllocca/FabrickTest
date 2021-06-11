@@ -1,7 +1,7 @@
 package it.fabrick.controller;
 
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
-import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
+import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsPayload;
 import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
 import it.fabrick.entity.moneyTransfer.response.MoneyTransferPayload;
 import it.fabrick.service.bankingaccount.IBankingAccountService;
@@ -26,7 +26,7 @@ public class FabrickController {
     }
 
     @GetMapping("/cashAccountTransactions/{accountId}")
-    public CashAccountTransactionsList getCashAccountTransactions(
+    public CashAccountTransactionsPayload getCashAccountTransactions(
         @PathVariable String accountId,
         @RequestParam String fromAccountingDate,
         @RequestParam String toAccountingDate
