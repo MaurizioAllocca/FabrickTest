@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class BankingAccountService implements IBankingAccountService {
@@ -37,7 +38,9 @@ public class BankingAccountService implements IBankingAccountService {
     private String cashAccountTransactions;
 
     @Override
-    public CashAccountBalancePayload getCashAccountBalance(String accountId) {
+    public CashAccountBalancePayload getCashAccountBalance(
+        String accountId
+    ) {
         return rt.exchange(HttpUtils.builder().domain(baseUrl)
                 .uri(cashAccountBalance)
                 .pathVariables(new String[]{accountId})
@@ -52,7 +55,8 @@ public class BankingAccountService implements IBankingAccountService {
 
     @Override
     public CashAccountTransactionsList getCashAccountTransactions(
-        String fromAccountingDate, String toAccountingDate, String accountId) {
+        String fromAccountingDate, String toAccountingDate, String accountId
+    ) {
         return rt
             .exchange(
                 HttpUtils.builder()
@@ -74,8 +78,13 @@ public class BankingAccountService implements IBankingAccountService {
 
     @Override
     public CashAccountTransactionsList storeCashAccountTransactions(
-        CashAccountTransactionsList cashAccountTransactionsList) {
-        transactionRepository.saveAll(cashAccountTransactionsList.getList());
+        CashAccountTransactionsList cashAccountTransactionsList
+    ) {
+        transactionRepository.saveAll(
+            Optional.ofNullable(
+                Optional.ofNullable(cashAccountTransactionsList)
+                    .orElseGet(CashAccountTransactionsList::new).getList())
+                .orElseGet(Collections::emptyList));
         return cashAccountTransactionsList;
     }
 

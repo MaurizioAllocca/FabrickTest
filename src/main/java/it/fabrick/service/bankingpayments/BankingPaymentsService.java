@@ -26,7 +26,8 @@ public class BankingPaymentsService implements IBankingPaymentsService {
 
     @Override
     public MoneyTransferPayload createMoneyTransfer(
-        MoneyTransferRequest moneyTransferRequest, String accountId) {
+        MoneyTransferRequest moneyTransferRequest, String accountId
+    ) {
         return rt
             .exchange(
                 HttpUtils.builder()

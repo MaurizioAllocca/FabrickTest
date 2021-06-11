@@ -32,7 +32,9 @@ public class HttpUtils {
         return UriComponentsBuilder.fromHttpUrl(url);
     }
 
-    private UriComponentsBuilder buildQueryParams(UriComponentsBuilder uriComponentsBuilder) {
+    private UriComponentsBuilder buildQueryParams(
+        UriComponentsBuilder uriComponentsBuilder
+    ) {
         if (queryParams != null && queryParams.size() > 0) {
             return uriComponentsBuilder.queryParams(queryParams);
         }

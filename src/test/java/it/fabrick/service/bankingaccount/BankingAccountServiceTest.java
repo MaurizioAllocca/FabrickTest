@@ -42,6 +42,9 @@ public class BankingAccountServiceTest {
                 new TypeReference<>() {
                 });
 
+        bas.storeCashAccountTransactions(null);
+        assertThat(transactionRepository.findAll(), hasSize(0));
+
         assertThat(
             bas.storeCashAccountTransactions(cashAccountTransactionsList),
             is(cashAccountTransactionsList));

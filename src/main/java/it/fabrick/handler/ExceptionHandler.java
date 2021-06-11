@@ -18,7 +18,9 @@ public class ExceptionHandler implements IExceptionHandler {
 
     @Override
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-    public ResponseEntity<? extends ErrorCode> handleGenericException(Exception e, HttpServletRequest request) {
+    public ResponseEntity<? extends ErrorCode> handleGenericException(
+        Exception e, HttpServletRequest request
+    ) {
         return new ResponseEntity<>(
             IExceptionHandler.buildErrorResponse(
                 request,
@@ -28,7 +30,9 @@ public class ExceptionHandler implements IExceptionHandler {
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(HttpClientErrorException.class)
-    public ResponseEntity<? extends ErrorCode> handleHttpClientErrorException(HttpStatusCodeException e, HttpServletRequest request) {
+    public ResponseEntity<? extends ErrorCode> handleHttpClientErrorException(
+        HttpStatusCodeException e, HttpServletRequest request
+    ) {
         Errors error = JsonUtils.asPojo(
             e.getResponseBodyAsString(), GenericResponse.class)
             .getErrors()[0];
@@ -42,7 +46,9 @@ public class ExceptionHandler implements IExceptionHandler {
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(MissingServletRequestParameterException.class)
-    public ResponseEntity<? extends ErrorCode> handleMissingServletRequestParameterException(MissingServletRequestParameterException e, HttpServletRequest request) {
+    public ResponseEntity<? extends ErrorCode> handleMissingServletRequestParameterException(
+        MissingServletRequestParameterException e, HttpServletRequest request
+    ) {
 
         return new ResponseEntity<>(
             IExceptionHandler.buildErrorResponse(

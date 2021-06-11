@@ -12,8 +12,9 @@ public class JsonUtils {
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         .build();
 
-    public static <T> T asPojo(String resource, Class<T> clazz) {
-
+    public static <T> T asPojo(
+        String resource, Class<T> clazz
+    ) {
         try {
             OBJECT_MAPPER.registerModule(new JavaTimeModule());
             return OBJECT_MAPPER.readValue(resource, clazz);

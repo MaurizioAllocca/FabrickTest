@@ -22,7 +22,9 @@ public class RestTemplateHeaderModifierInterceptor implements ClientHttpRequestI
     private String idChiave;
 
     @Override
-    public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+    public ClientHttpResponse intercept(
+        HttpRequest request, byte[] body, ClientHttpRequestExecution execution
+    ) throws IOException {
         request.getHeaders().add("Auth-Schema", authSchema);
         request.getHeaders().add("Api-Key", apiKey);
         request.getHeaders().add("Id-chiave", idChiave);
