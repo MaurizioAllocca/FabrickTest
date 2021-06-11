@@ -2,7 +2,6 @@ package it.fabrick.service.bankingaccount;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.fabrick.Application;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
 import it.fabrick.repository.TransactionRepository;
 import org.junit.Test;
@@ -12,13 +11,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.core.io.Resource;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.anyString;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

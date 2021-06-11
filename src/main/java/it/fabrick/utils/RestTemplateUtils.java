@@ -17,11 +17,6 @@ public class RestTemplateUtils {
     @Autowired
     private RestTemplate rtBean;
 
-    @PostConstruct
-    public void init() {
-        this.rt = rtBean;
-    }
-
     public static <T> T makeRequest(
         String url, HttpMethod method, HttpEntity entity, Class<T> clazz
     ) {
@@ -34,5 +29,10 @@ public class RestTemplateUtils {
 
         return re != null ? re.getBody() : null;
 
+    }
+
+    @PostConstruct
+    public void init() {
+        this.rt = rtBean;
     }
 }

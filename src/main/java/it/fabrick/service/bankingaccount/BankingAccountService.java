@@ -14,7 +14,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 import java.util.Map;
@@ -49,7 +48,7 @@ public class BankingAccountService implements IBankingAccountService {
             HttpMethod.GET,
             new HttpEntity<>(new HttpHeaders()),
             CashAccountBalance.class)
-        .getPayload();
+            .getPayload();
     }
 
     @Override
@@ -63,14 +62,14 @@ public class BankingAccountService implements IBankingAccountService {
                 .uri(cashAccountTransactions)
                 .pathVariables(new String[]{accountId})
                 .queryParams(new LinkedMultiValueMap<>(Map.of(
-                "fromAccountingDate", Collections.singletonList(fromAccountingDate),
-                "toAccountingDate", Collections.singletonList(toAccountingDate))))
+                    "fromAccountingDate", Collections.singletonList(fromAccountingDate),
+                    "toAccountingDate", Collections.singletonList(toAccountingDate))))
                 .build()
                 .createStringUrl(),
             HttpMethod.GET,
             new HttpEntity<>(new HttpHeaders()),
             CashAccountTransactions.class)
-        .getPayload();
+            .getPayload();
     }
 
     @Override

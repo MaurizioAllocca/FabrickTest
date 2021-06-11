@@ -1,7 +1,6 @@
 package it.fabrick.entity.moneyTransfer.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import it.fabrick.entity.moneyTransfer.Person;
 import lombok.AllArgsConstructor;

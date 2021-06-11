@@ -2,7 +2,6 @@ package it.fabrick.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.fabrick.Application;
 import it.fabrick.entity.cashAccountBalance.response.CashAccountBalancePayload;
 import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransactionsList;
 import it.fabrick.entity.moneyTransfer.request.MoneyTransferRequest;
@@ -19,7 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -65,7 +63,7 @@ public class FabrickControllerTest {
                 .build());
 
         assertThat(mockMvc.perform(
-            get("/fabrick/cashAccountBalance"))
+            get("/fabrick/cashAccountBalance/123"))
             .andDo(print())
             .andExpect(status().isOk())
             .andReturn()
@@ -89,7 +87,7 @@ public class FabrickControllerTest {
             .thenReturn(cashAccountTransactionsList);
 
         String response = mockMvc.perform(
-            get("/fabrick/cashAccountTransactions")
+            get("/fabrick/cashAccountTransactions/123")
                 .param("fromAccountingDate", "2021-06-09")
                 .param("toAccountingDate", "2021-06-10"))
             .andDo(print())
@@ -113,7 +111,7 @@ public class FabrickControllerTest {
         doReturn(moneyTransferPayload).when(bps).createMoneyTransfer(any(MoneyTransferRequest.class), anyString());
 
         String response = mockMvc.perform(
-            post("/fabrick/moneyTransfer")
+            post("/fabrick/moneyTransfer/123")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(moneyTransferRequestMock.getInputStream().readAllBytes()))
             .andDo(print())
