@@ -1,7 +1,7 @@
 package it.fabrick.entity.cashAccountBalance.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import it.fabrick.entity.response.GenericResponse;
+import it.fabrick.entity.GenericResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

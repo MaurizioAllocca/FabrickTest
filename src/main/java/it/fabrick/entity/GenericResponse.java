@@ -1,4 +1,4 @@
-package it.fabrick.entity.response;
+package it.fabrick.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

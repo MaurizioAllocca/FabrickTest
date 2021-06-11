@@ -1,7 +1,7 @@
 package it.fabrick.handler;
 
-import it.fabrick.entity.response.Errors;
-import it.fabrick.entity.response.GenericResponse;
+import it.fabrick.entity.Errors;
+import it.fabrick.entity.GenericResponse;
 import it.fabrick.error.ErrorCode;
 import it.fabrick.utils.JsonUtils;
 import org.springframework.http.HttpStatus;

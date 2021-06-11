@@ -1,4 +1,4 @@
-package it.fabrick.entity.response;
+package it.fabrick.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
