@@ -18,23 +18,26 @@ public class FabrickController {
     @Autowired
     private IBankingPaymentsService bps;
 
-    @GetMapping("/cashAccountBalance")
-    public CashAccountBalancePayload getCashAccountBalance() {
-        return bas.getCashAccountBalance();
+    @GetMapping("/cashAccountBalance/{accountId}")
+    public CashAccountBalancePayload getCashAccountBalance(
+        @PathVariable String accountId) {
+        return bas.getCashAccountBalance(accountId);
     }
 
-    @GetMapping("/cashAccountTransactions")
+    @GetMapping("/cashAccountTransactions/{accountId}")
     public CashAccountTransactionsList getCashAccountTransactions(
         @RequestParam String fromAccountingDate,
-        @RequestParam String toAccountingDate
+        @RequestParam String toAccountingDate,
+        @PathVariable String accountId
     ) {
         return bas.storeCashAccountTransactions(
-            bas.getCashAccountTransactions(fromAccountingDate, toAccountingDate));
+            bas.getCashAccountTransactions(fromAccountingDate, toAccountingDate, accountId));
     }
 
-    @PostMapping("/moneyTransfer")
+    @PostMapping("/moneyTransfer/{accountId}")
     public MoneyTransferPayload createMoneyTransfer(
-        @RequestBody MoneyTransferRequest moneyTransferRequest) {
-        return bps.createMoneyTransfer(moneyTransferRequest);
+        @RequestBody MoneyTransferRequest moneyTransferRequest,
+        @PathVariable String accountId) {
+        return bps.createMoneyTransfer(moneyTransferRequest, accountId);
     }
 }

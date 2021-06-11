@@ -24,11 +24,9 @@ public class BankingPaymentsService implements IBankingPaymentsService {
     @Value("${uri.moneyTransfer}")
     private String moneyTransfer;
 
-    @Value("${accountId}")
-    private String accountId;
-
     @Override
-    public MoneyTransferPayload createMoneyTransfer(MoneyTransferRequest moneyTransferRequest) {
+    public MoneyTransferPayload createMoneyTransfer(
+        MoneyTransferRequest moneyTransferRequest, String accountId) {
         return rt
             .exchange(
                 HttpUtils.builder()

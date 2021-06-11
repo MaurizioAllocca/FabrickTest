@@ -37,7 +37,7 @@ public class AopTest {
 
     @Test
     public void logControllerMethodEnteringTest() throws Exception {
-        when(bas.getCashAccountBalance())
+        when(bas.getCashAccountBalance(anyString()))
             .thenReturn(CashAccountBalancePayload
                 .builder()
                 .balance("80")
@@ -54,7 +54,7 @@ public class AopTest {
 
     @Test
     public void logControllerMethodExitingTest() throws Exception {
-        when(bas.getCashAccountBalance())
+        when(bas.getCashAccountBalance(anyString()))
             .thenReturn(CashAccountBalancePayload
                 .builder()
                 .balance("80")

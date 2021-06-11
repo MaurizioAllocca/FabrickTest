@@ -58,7 +58,7 @@ public class FabrickControllerTest {
     @Test
     public void getCashAccountBalanceTest() throws Exception {
 
-        when(bas.getCashAccountBalance())
+        when(bas.getCashAccountBalance(anyString()))
             .thenReturn(CashAccountBalancePayload
                 .builder()
                 .balance("80")
@@ -82,7 +82,7 @@ public class FabrickControllerTest {
                 new TypeReference<>() {
                 });
 
-        when(bas.getCashAccountTransactions(anyString(), anyString()))
+        when(bas.getCashAccountTransactions(anyString(), anyString(), anyString()))
             .thenReturn(cashAccountTransactionsList);
 
         when(bas.storeCashAccountTransactions(any(CashAccountTransactionsList.class)))
@@ -110,7 +110,7 @@ public class FabrickControllerTest {
                 new TypeReference<>() {
                 });
 
-        doReturn(moneyTransferPayload).when(bps).createMoneyTransfer(any(MoneyTransferRequest.class));
+        doReturn(moneyTransferPayload).when(bps).createMoneyTransfer(any(MoneyTransferRequest.class), anyString());
 
         String response = mockMvc.perform(
             post("/fabrick/moneyTransfer")

@@ -5,5 +5,5 @@ import it.fabrick.entity.moneyTransfer.response.MoneyTransferPayload;
 
 public interface IBankingPaymentsService {
 
-    MoneyTransferPayload createMoneyTransfer(MoneyTransferRequest moneyTransferRequest);
+    MoneyTransferPayload createMoneyTransfer(MoneyTransferRequest moneyTransferRequest, String accountId);
 }

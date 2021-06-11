@@ -6,7 +6,6 @@ auth:
   schema: S2S
 id:
   chiave: 3202
-accountId: 14537780
 uri:
   baseUrl: https://sandbox.platfr.io
   cashAccountBalance: /api/gbs/banking/v4.0/accounts/{accountId}/balance

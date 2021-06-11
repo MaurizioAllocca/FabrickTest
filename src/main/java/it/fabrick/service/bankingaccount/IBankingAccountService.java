@@ -5,9 +5,11 @@ import it.fabrick.entity.cashAccountTransactions.response.CashAccountTransaction
 
 public interface IBankingAccountService {
 
-    CashAccountBalancePayload getCashAccountBalance();
+    CashAccountBalancePayload getCashAccountBalance(String accountId);
 
-    CashAccountTransactionsList getCashAccountTransactions(String fromAccountingDate, String toAccountingDate);
+    CashAccountTransactionsList getCashAccountTransactions(
+        String fromAccountingDate, String toAccountingDate, String accountId);
 
-    CashAccountTransactionsList storeCashAccountTransactions(CashAccountTransactionsList cashAccountTransactionsList);
+    CashAccountTransactionsList storeCashAccountTransactions(
+        CashAccountTransactionsList cashAccountTransactionsList);
 }

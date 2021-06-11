@@ -36,11 +36,8 @@ public class BankingAccountService implements IBankingAccountService {
     @Value("${uri.cashAccountTransactions}")
     private String cashAccountTransactions;
 
-    @Value("${accountId}")
-    private String accountId;
-
     @Override
-    public CashAccountBalancePayload getCashAccountBalance() {
+    public CashAccountBalancePayload getCashAccountBalance(String accountId) {
         return rt.exchange(HttpUtils.builder().domain(baseUrl)
                 .uri(cashAccountBalance)
                 .pathVariables(new String[]{accountId})
@@ -54,7 +51,8 @@ public class BankingAccountService implements IBankingAccountService {
     }
 
     @Override
-    public CashAccountTransactionsList getCashAccountTransactions(String fromAccountingDate, String toAccountingDate) {
+    public CashAccountTransactionsList getCashAccountTransactions(
+        String fromAccountingDate, String toAccountingDate, String accountId) {
         return rt
             .exchange(
                 HttpUtils.builder()
@@ -75,7 +73,8 @@ public class BankingAccountService implements IBankingAccountService {
     }
 
     @Override
-    public CashAccountTransactionsList storeCashAccountTransactions(CashAccountTransactionsList cashAccountTransactionsList) {
+    public CashAccountTransactionsList storeCashAccountTransactions(
+        CashAccountTransactionsList cashAccountTransactionsList) {
         transactionRepository.saveAll(cashAccountTransactionsList.getList());
         return cashAccountTransactionsList;
     }
