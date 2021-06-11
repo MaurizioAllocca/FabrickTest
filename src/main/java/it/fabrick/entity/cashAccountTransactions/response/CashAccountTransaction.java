@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CashAccountTransaction {
 
+    @Id
     private String transactionId;
     private String operationId;
     private String accountingDate;
@@ -21,4 +23,5 @@ public class CashAccountTransaction {
     private Double amount;
     private String currency;
     private String description;
+
 }
